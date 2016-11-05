@@ -1,0 +1,129 @@
+﻿  <!DOCTYPE html>
+  <html>
+    <head>
+	  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+	  <script type="text/javascript" src="js/keyboard.js"></script>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, 
+        maximum-scale=1.0, minimum-scale=1.0, minimal-ui" />
+	<script>
+	var y = ["好身材！","該減肥了…","瘦過頭囉~"];
+	function footer(x)
+	{
+	document.getElementById("footer").innerHTML = '<a href="#">' + y[x] + '</a>';
+	}
+	function f()
+	{
+		var h = document.getElementById("h").value/100;
+		var w = document.getElementById("w").value;
+		var bmi = w/h/h;
+		var stdH,stdL;
+		var a = document.getElementById("boy").checked;	
+		var link=["https://thumbs.dreamstime.com/z/vector-stick-man-running-fitness-slogan-healthy-figure-stay-active-39528096.jpg","https://thumbs.dreamstime.com/z/fat-cat-saying-cartoon-illustration-38202281.jpg","http://cliparts.co/cliparts/8iz/K8k/8izK8k7xT.jpg"]
+
+		switch(a)
+		{
+			case true:
+				stdH = Math.floor(25*h*h);stdL = Math.floor(20*h*h);
+				document.getElementById("exp").innerHTML = "您的標準體重範圍為："+stdL+" 至 "+stdH;
+				if(bmi>25){
+					document.getElementById("pic").innerHTML = '<img src = "' + link[1] +'">';
+					footer(1);
+				}else if(bmi<20){
+					document.getElementById("pic").innerHTML = '<img src="' + link[2] +'">';
+					footer(2);
+				}else{	
+				document.getElementById("pic").innerHTML = '<img src = "' + link[0] +'">';
+				footer(0);
+				}
+				break;
+			case false:
+				stdH = Math.floor(22*h*h);stdL = Math.floor(18*h*h);
+				document.getElementById("exp").innerHTML = "您的標準體重範圍為："+stdL+" 至 "+stdH;
+				if(bmi>22){
+				document.getElementById("pic").innerHTML = '<img src = "' + link[1] +'">';
+				footer(1);
+				}else if(bmi<18){
+					document.getElementById("pic").innerHTML = '<img src="' + link[2] +'">';
+					footer(2);
+				}else{	
+				document.getElementById("pic").innerHTML = '<img src = "' + link[0] +'">';
+				footer(0);
+				}
+				break;
+			default:
+				alert('default');
+		}
+	}	
+	</script>    
+	</head>
+    <body>   
+   <nav>
+    <div class="nav-wrapper">
+      <div class="col s12" align="center">
+        <a href="#!" class="breadcrumb">BMI</a>
+      </div>
+    </div>
+  </nav><br>
+		<div class="col s12" align = "center">請輸入體重</div>
+            <input id="w" readonly="readonly" style="height:28px;width:98%;outline:none;
+            border:1px solid #1AB6FF;padding-left:3px;"/>
+            <br />
+            <br />
+		<div class="col s12" align = "center">請輸入身高</div>
+            <input id="h" readonly="readonly"  style="height:28px;width:98%;
+            outline:none;border:1px solid #1AB6FF;padding-left:3px;"/>
+        <script type="text/javascript">
+        (function(){
+            var input1 = document.getElementById('w');
+            var input2 = document.getElementById('h');
+
+            input1.onclick = function(){
+                new KeyBoard(input1);
+            };
+
+            input2.onclick = function(){
+                new KeyBoard(input2);
+            };
+
+        })();
+        </script>
+			<div align = "center">
+			<input name="group1" type="radio" id="boy" checked />
+			<label for="boy">boy</input>
+			<input name="group1" type="radio" id="girl" />
+			<label for="girl">girl</label>
+			</div><br>
+		<div align = "center"><button class="btn waves-effect waves-light" type="submit" name="action" onclick="f()">Submit
+		</button></div><br>
+	     <div id = "exp" class="card-content" align = "center">
+            </div>
+		<div class="row" ><!--card-->
+        <div class="col s12 m7">
+          <div class="card">
+            <div id="pic" class="card-image">
+            </div>
+           
+            <div class="card-action" align="center" id="footer">
+            </div>
+          </div>
+        </div>
+      </div>
+	    <footer class="page-footer">
+          
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+   </body>
+  </html>
+        
