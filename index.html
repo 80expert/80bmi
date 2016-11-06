@@ -19,7 +19,7 @@
 	{
 		var h = document.getElementById("h").value/100;
 		var w = document.getElementById("w").value;
-		var bmi = w/h/h;
+		var bmi = Math.floor(w/h/h);
 		var stdH,stdL;
 		var a = document.getElementById("boy").checked;	
 		var link=["https://thumbs.dreamstime.com/z/vector-stick-man-running-fitness-slogan-healthy-figure-stay-active-39528096.jpg","https://thumbs.dreamstime.com/z/fat-cat-saying-cartoon-illustration-38202281.jpg","http://cliparts.co/cliparts/8iz/K8k/8izK8k7xT.jpg"]
@@ -28,7 +28,10 @@
 		{
 			case true:
 				stdH = Math.floor(25*h*h);stdL = Math.floor(20*h*h);
-				document.getElementById("exp").innerHTML = "您的標準體重範圍為："+stdL+" 至 "+stdH;
+				document.getElementById("exp").innerHTML =
+						"您的BMI值<br>" + bmi + "<br>" +
+						"男性標準BMI值<br>20&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;25<br>" +
+						"您的標準體重範圍<br>" + stdL + "&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;" + stdH;
 				if(bmi>25){
 					document.getElementById("pic").innerHTML = '<img src = "' + link[1] +'">';
 					footer(1);
@@ -42,7 +45,10 @@
 				break;
 			case false:
 				stdH = Math.floor(22*h*h);stdL = Math.floor(18*h*h);
-				document.getElementById("exp").innerHTML = "您的標準體重範圍為："+stdL+" 至 "+stdH;
+				document.getElementById("exp").innerHTML =
+						"您的BMI值<br>" + bmi + "<br>" +
+						"女性標準BMI值<br>18&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;22<br>" +
+						"您的標準體重範圍<br>" + stdL + "&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;" + stdH;
 				if(bmi>22){
 				document.getElementById("pic").innerHTML = '<img src = "' + link[1] +'">';
 				footer(1);
@@ -61,7 +67,7 @@
 	</script>    
 	</head>
     <body>   
-		<div class="navbar-fixed">
+	<div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">BMI</a>
@@ -73,12 +79,13 @@
     </nav>
   </div><br>
 
-  <form align = "center">
+	<form align = "center">
 			<input name="group1" type="radio" id="boy" checked />
 			<label for="boy">boy&nbsp;&nbsp;</label>
 			<input name="group1" type="radio" id="girl" />
 			<label for="girl">girl</label>
 			</form>
+	
 	<div class="row">
     <form class="col s12">
       <div class="row">
@@ -91,23 +98,27 @@
 		</div>
 		</form>
 		</div>
-		<div align="center">
+		
+	<div align="center">
 		<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f()">Submit
-		</button></div><p></p>
+		</button></div>
+           </div>	
+	
+    <div class="col s12 m7">
+    <div class="card horizontal">
+      <div id="pic" class="card-image">
+      </div>
+      <div class="card-stacked">
+        <div align ="center" id = "exp" class="card-content">
 
-	     <div id = "exp" class="card-content" align = "center"></div><!--standard-->
-            </div>	
-	<div class="row" ><!--card-->
-        <div class="col s12 m7">
-          <div class="card">
-            <div id="pic" class="card-image">
-            </div>
-           
-            <div class="card-action" align="center" id="footer">
-            </div>
-          </div>
+        </div>
+        <div class="card-action" id="footer">
         </div>
       </div>
+    </div>
+  </div>
+	  
+	  
 	    <footer class="page-footer">
           <div class="footer-copyright">
             <div class="container">
