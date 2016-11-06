@@ -17,7 +17,6 @@
 	}
 	function f()
 	{
-		alert('a');
 		var h = document.getElementById("h").value/100;
 		var w = document.getElementById("w").value;
 		var bmi = w/h/h;
@@ -78,20 +77,25 @@
 			<input name="group1" type="radio" id="boy" checked />
 			<label for="boy">boy&nbsp;&nbsp;</label>
 			<input name="group1" type="radio" id="girl" />
-			<label for="girl">girl</label><p></p>
-			<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f()">Submit
-		</button>
-			</form><br>
-
-			<div class="row">
+			<label for="girl">girl</label>
+			</form>
+	<div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          
+          <input placeholder="&nbsp;&nbsp;&nbsp;請輸入身高" id="h" type="tel" class="validate">          
         </div>
-			
-	     <div id = "exp" class="card-content" align = "center"><!--standard-->
+        <div class="input-field col s6">
+          <input placeholder="&nbsp;&nbsp;&nbsp;請輸入體重" id="w" type="tel" class="validate">          
+        </div>	
+		</div>
+		</form>
+		</div>
+		<div align="center">
+		<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f()">Submit
+		</button></div><p></p>
+
+	     <div id = "exp" class="card-content" align = "center"></div><!--standard-->
             </div>	
 	<div class="row" ><!--card-->
         <div class="col s12 m7">
