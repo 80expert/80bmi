@@ -9,7 +9,13 @@
       <!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<script>
-	
+	var inputWeight,inputHeight,gender;
+	if(inputWeight != "" && inputHeight != "" && gender != ""){
+		document.getElementById("h").value = inputHight;
+		document.getElementById("w").value = inputWeight;
+		document.getElementById("boy").checked = gender;
+		f();
+	}
 	var y = ["好身材！","該減肥了…","瘦過頭囉~"];
 	function footer(x)
 	{
