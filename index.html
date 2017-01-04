@@ -9,31 +9,42 @@
       <!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<script>
-	var inputWeight,inputHeight,gender;
-	if(inputWeight != "" && inputHeight != "" && gender != ""){
-		document.getElementById("h").value = inputHight;
+	var inputWeight,inputHeight,gender,h,w,a,hh;
+		// 要先取得網址裡的路徑起點終點經緯度參數 
+		  inputWeight = decodeURIComponent(GetUrlVar('weight'));
+		  inputHeight = decodeURIComponent(GetUrlVar('height'));
+		  gender = decodeURIComponent(GetUrlVar('gender'));
+		
+	function start(){
+		if(inputWeight != ""){
+		document.getElementById("h").value = inputHeight;
 		document.getElementById("w").value = inputWeight;
-		document.getElementById("boy").checked = gender;
+		if(gender==1)document.getElementById("boy").checked = true;
+		else document.getElementById("girl").checked = true;
+		alert("哈囉~ 這是我的bmi值！");
 		f();
+		}
 	}
 	var y = ["好身材！","該減肥了…","瘦過頭囉~"];
 	function footer(x)
 	{
-	document.getElementById("footer").innerHTML = '<a href="#">' + y[x] + '</a>';
+		document.getElementById("footer").innerHTML = '<a href="#">' + y[x] + '</a>';
 	}
 	function f()
 	{
-		var h = document.getElementById("h").value/100;
-		var w = document.getElementById("w").value;
-		var bmi = Math.floor(w/h/h);
+
+		h = document.getElementById("h").value;
+		hh = h/100
+		w = document.getElementById("w").value;
+		var bmi = Math.floor(w/hh/hh);
 		var stdH,stdL;
-		var a = document.getElementById("boy").checked;	
+		a = document.getElementById("boy").checked;	
 		var link=["https://thumbs.dreamstime.com/z/vector-stick-man-running-fitness-slogan-healthy-figure-stay-active-39528096.jpg","https://thumbs.dreamstime.com/z/fat-cat-saying-cartoon-illustration-38202281.jpg","http://cliparts.co/cliparts/8iz/K8k/8izK8k7xT.jpg"]
 		
 		switch(a)
 		{
 			case true:
-				stdH = Math.floor(25*h*h);stdL = Math.floor(20*h*h);
+				stdH = Math.floor(25*hh*hh);stdL = Math.floor(20*hh*hh);
 				document.getElementById("exp").innerHTML =
 						"您的BMI值<br>" + bmi + "<br>" +
 						"男性標準BMI值<br>20&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;25<br>" +
@@ -50,7 +61,7 @@
 				}
 				break;
 			case false:
-				stdH = Math.floor(22*h*h);stdL = Math.floor(18*h*h);
+				stdH = Math.floor(22*hh*hh);stdL = Math.floor(18*hh*hh);
 				document.getElementById("exp").innerHTML =
 						"您的BMI值<br>" + bmi + "<br>" +
 						"女性標準BMI值<br>18&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;22<br>" +
@@ -70,23 +81,45 @@
 				alert('default');
 		}
 	}	
+	function f1(){
+		if(document.getElementById("boy").checked)gender=1;
+		var xLink = "";
+		xLink += "file:///D:/desktop/80bmi-master/index.html?height="+
+		h+"&weight="+w+"&gender="+gender;
+		document.getElementById("shareLink").href = xLink;
+		document.getElementById("shareLink").innerHTML = "長按我分享喔~";
+	}
+		
+
+	
+	// 取得網址裡的參數 
+		function GetUrlVar(VarName) 
+		{
+		  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");    //正規表示式
+		  var regexS = "[\\?&]" + VarName + "=([^&#]*)";
+		  var regex = new RegExp(regexS);
+		  var results = regex.exec(window.location.href);
+		  if (results == null)
+		   	 return "";
+		  else
+			 return results[1];
+		}
+           						//X = Number(X); //把字串轉成整數
 	</script>    
 	</head>
-    <body>   
+    <body onload="start()">   
+
 	<div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">BMI</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-        </ul>
+        <a href="https://80expert.github.io/80bmi/" class="brand-logo">BMI - 健康計算機</a>
+        
       </div>
     </nav>
   </div><br>
 
 	<form align = "center">
-			<input name="group1" type="radio" id="boy" checked />
+			<input name="group1" type="radio" id="boy" />
 			<label for="boy">boy&nbsp;&nbsp;</label>
 			<input name="group1" type="radio" id="girl" />
 			<label for="girl">girl</label>
@@ -106,9 +139,11 @@
 		</div>
 		
 	<div align="center">
-		<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f()">Submit
-		</button></div>
-           </div>	
+		<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f()">Submit</button>
+		<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f1()">Share!</button>
+		<p>
+		<a href="" id = "shareLink"></a>
+
 	
     <div class="col s12 m7">
     <div class="card horizontal">
@@ -135,4 +170,3 @@
         </footer>
    </body>
   </html>
-        
