@@ -30,9 +30,14 @@
 	{
 		document.getElementById("footer").innerHTML = '<a href="#">' + y[x] + '</a>';
 	}
+
 	function f()
 	{
-
+		if(!document.getElementById("boy").checked)
+			if(!document.getElementById("girl").checked){
+				alert("選一下性別喔~");
+				return;
+			}
 		h = document.getElementById("h").value;
 		hh = h/100
 		w = document.getElementById("w").value;
@@ -80,11 +85,12 @@
 			default:
 				alert('default');
 		}
-	}	
+	}
+	
 	function f1(){
 		if(document.getElementById("boy").checked)gender=1;
 		var xLink = "";
-		xLink += "file:///D:/desktop/80bmi-master/index.html?height="+
+		xLink += "https://80expert.github.io/80bmi/?height="+
 		h+"&weight="+w+"&gender="+gender;
 		document.getElementById("shareLink").href = xLink;
 		document.getElementById("shareLink").innerHTML = "長按我分享喔~";
@@ -129,12 +135,16 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="&nbsp;&nbsp;&nbsp;請輸入身高" id="h" type="tel" class="validate">          
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="&nbsp;&nbsp;&nbsp;請輸入體重" id="w" type="tel" class="validate">          
-        </div>	
+          <p>身高</p>
+		  <input placeholder="請輸入：公分" id="h" type="tel" class="validate">          
 		</div>
+        <div class="input-field col s6">
+		  <p>體重</p>
+          <input placeholder="請輸入：公斤" id="w" type="tel" class="validate">          
+        </div>	
+		
+	
+	</div>
 		</form>
 		</div>
 		
