@@ -93,6 +93,7 @@
 		xLink += "https://80expert.github.io/80bmi/?height="+
 		h+"&weight="+w+"&gender="+gender;
 		document.getElementById("shareLink").href = xLink;
+		document.getElementById("buttons").style = "display:none"
 		document.getElementById("shareLink").innerHTML = "長按我分享喔~";
 	}
 		
@@ -148,13 +149,15 @@
 		</form>
 		</div>
 		
-	<div align="center">
+	<div align="center" id="buttons">
 		<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f()">Submit</button>
 		<button class="btn waves-effect waves-light" type="submit" name="action" onclick="f1()">Share!</button>
-		<p>
-		<a href="" id = "shareLink"></a>
+	</div>
+		
 
-	
+	<div align="center">
+	<a href="" id = "shareLink"></a>
+	<br>
     <div class="col s12 m7">
     <div class="card horizontal">
       <div id="pic" class="card-image">
