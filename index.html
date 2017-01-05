@@ -8,6 +8,7 @@
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <!--Let browser know website is optimized for mobile-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	
 	<script>
 	var inputWeight,inputHeight,gender,h,w,a,hh;
 		// 要先取得網址裡的路徑起點終點經緯度參數 
@@ -97,9 +98,11 @@
 		var xLink = "";
 		xLink += "https://80expert.github.io/80bmi/?height="+
 		h+"&weight="+w+"&gender="+gender;
-		document.getElementById("shareLink").href = xLink;
-		document.getElementById("buttons").style = "display:none"
-		document.getElementById("shareLink").innerHTML = "長按我分享喔~";
+		var res = encodeURIComponent(xLink);
+		document.getElementById("buttons").style = "display:none";
+		document.getElementById("shareLink").href = "http://line.naver.jp/R/msg/text/?"+xLink;
+		document.getElementById("shareLink").style = "display:inline";
+		
 	}
 		
 
@@ -161,7 +164,8 @@
 		
 
 	<div align="center">
-	<a href="" id = "shareLink"></a>
+	
+	<a id = "shareLink" href="" style="display:none"><img src="line.png" width="168" height="40" alt="用LINE傳送" /></a>
 	<br>
     <div class="col s12 m7">
     <div class="card horizontal">
